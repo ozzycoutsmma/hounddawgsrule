@@ -1,0 +1,295 @@
+html
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE HOUND DAWGS RULE EVERYONE</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Montserrat:wght@400;700;900&family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            silver: '#E5E7EB',
+            diamond: '#00F0FF',
+            darkMetal: '#0B0C10',
+            glowWhite: '#FFFFFF',
+          },
+          fontFamily: {
+            title: ['"Orbitron"', 'sans-serif'],
+            display: ['"Cinzel Decorative"', 'serif'],
+            body: ['"Montserrat"', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'glow-pulse': 'glow 2s ease-in-out infinite alternate',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            glow: {
+              '0%': { filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.2))' },
+              '100%': { filter: 'drop-shadow(0 0 25px rgba(255, 255, 255, 0.8))' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #050505;
+      color: #E5E7EB;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Metallic Text Effect */
+    .chrome-text {
+      background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 45%, #4B5563 50%, #FFFFFF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.3);
+    }
+
+    .diamond-glow {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073;
+    }
+
+    /* Diamond Border Styling */
+    .diamond-card-border {
+      position: relative;
+      background: #0d0d0d;
+      border-radius: 1rem;
+    }
+    .diamond-card-border::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: linear-gradient(45deg, #ffffff, #262626, #ffffff, #111111, #ffffff);
+      border-radius: 1.1rem;
+      z-index: -1;
+      background-size: 400%;
+      animation: steam 20s linear infinite;
+    }
+
+    @keyframes steam {
+      0% { background-position: 0 0; }
+      50% { background-position: 400% 0; }
+      100% { background-position: 0 0; }
+    }
+
+    /* Grain Overlay for Raw Aesthetic */
+    .bg-grain {
+      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.05"/></svg>');
+    }
+  </style>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col justify-between bg-grain relative">
+
+  <!-- Background Ambient Glow -->
+  <div class="fixed inset-0 pointer-events-none flex justify-center items-center opacity-30 z-0">
+    <div class="w-[600px] h-[600px] bg-white rounded-full blur-[160px] opacity-10 animate-pulse-slow"></div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="relative z-10 w-full px-6 py-6 flex justify-between items-center max-w-7xl mx-auto border-b border-zinc-900">
+    <div class="flex items-center space-x-3">
+      <i class="fa-solid font-bold fa-dog text-2xl text-white tracking-wider"></i>
+      <span class="font-title font-black text-xl tracking-widest text-white uppercase">HOUND DAWGS</span>
+    </div>
+    
+    <div class="flex items-center space-x-4">
+      <button id="barkBtn" class="bg-zinc-900 hover:bg-zinc-800 text-white font-bold py-2 px-4 rounded-full border border-zinc-700 transition duration-300 text-sm flex items-center gap-2 shadow-lg hover:border-white">
+        <i class="fa-solid fa-volume-high"></i> <span class="hidden sm:inline">SOUND ON</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Hero Content -->
+  <main class="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 py-12 max-w-6xl mx-auto w-full">
+    
+    <!-- Top Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-700/80 text-xs font-semibold uppercase tracking-widest text-zinc-300 mb-8 backdrop-blur-md">
+      <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+      UNMATCHED AUTHORITY • TOP DOG STATUS
+    </div>
+
+    <!-- Main Headline -->
+    <h1 class="font-title font-black text-4xl sm:text-6xl md:text-8xl tracking-tight uppercase mb-6 leading-none chrome-text">
+      THE HOUND DAWGS<br>
+      <span class="text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.8)]">RULE EVERYONE</span>
+    </h1>
+
+    <p class="max-w-2xl text-zinc-400 text-base sm:text-lg mb-12 font-medium tracking-wide">
+      Steeped in diamond grills, iced-out chains, and unshakeable dominance. Respect the pack or stay out of the yard.
+    </p>
+
+    <!-- Main Featured Image Display Container -->
+    <div class="w-full max-w-lg mx-auto mb-16 relative group">
+      
+      <!-- Card Decorative Wrapper -->
+      <div class="diamond-card-border p-2 shadow-2xl relative">
+        <div class="relative overflow-hidden rounded-lg aspect-[3/4] bg-zinc-950 flex flex-col items-center justify-center group">
+          
+          <!-- Image updated to iceddawg.jpg -->
+          <img 
+            id="houndImg"
+            src="iceddawg.jpg" 
+            alt="Iced Out Doberman Hound Dawg" 
+            class="w-full h-full object-cover rounded-lg filter contrast-125 brightness-90 transition duration-700 group-hover:scale-105"
+            onerror="handleImgError(this)"
+          />
+
+          <!-- Overlay Shine Effect -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 pointer-events-none"></div>
+
+          <!-- Drag and Drop / Replace Image Interaction Layer -->
+          <div id="dropZone" class="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center cursor-pointer border-2 border-dashed border-white/50 m-2 rounded-lg">
+            <i class="fa-solid fa-cloud-arrow-up text-4xl text-white mb-3"></i>
+            <p class="text-sm font-bold text-white mb-1">Replace Image Preview</p>
+            <p class="text-xs text-zinc-400 mb-4">Drag & drop your hound image here or click to browse</p>
+            <input type="file" id="fileInput" accept="image/*" class="hidden">
+            <button onclick="document.getElementById('fileInput').click()" class="px-4 py-2 bg-white text-black text-xs font-bold rounded-full hover:bg-zinc-200 transition">
+              Select File
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Image Caption / Badge -->
+      <div class="mt-4 flex items-center justify-between text-xs text-zinc-500 font-mono px-2">
+        <span>STATUS: ICED OUT</span>
+        <span>DOG_ID: #0001</span>
+      </div>
+    </div>
+
+    <!-- Features / Manifesto Grid -->
+    <div id="manifesto" class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full text-left mb-8">
+      
+      <div class="p-6 bg-zinc-900/40 border border-zinc-800/80 rounded-xl backdrop-blur-sm hover:border-zinc-600 transition">
+        <div class="text-white text-2xl mb-3"><i class="fa-solid fa-gem"></i></div>
+        <h3 class="font-title text-lg font-bold text-white mb-2 uppercase">DIAMOND TEETH</h3>
+        <p class="text-zinc-400 text-sm">Shining brighter than the rest. Precision-crafted chrome and diamonds built to bite.</p>
+      </div>
+
+      <div class="p-6 bg-zinc-900/40 border border-zinc-800/80 rounded-xl backdrop-blur-sm hover:border-zinc-600 transition">
+        <div class="text-white text-2xl mb-3"><i class="fa-solid fa-crown"></i></div>
+        <h3 class="font-title text-lg font-bold text-white mb-2 uppercase">ABSOLUTE RULE</h3>
+        <p class="text-zinc-400 text-sm">Top of the food chain. We don't ask for power—we claim it effortlessly.</p>
+      </div>
+
+      <div class="p-6 bg-zinc-900/40 border border-zinc-800/80 rounded-xl backdrop-blur-sm hover:border-zinc-600 transition">
+        <div class="text-white text-2xl mb-3"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3 class="font-title text-lg font-bold text-white mb-2 uppercase">UNCHAINED POWER</h3>
+        <p class="text-zinc-400 text-sm">Heavy silver links around the neck. A visual testament to relentless dominance.</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative z-10 py-8 border-t border-zinc-900 text-center text-xs text-zinc-600 font-mono">
+    <p>© 2026 HOUND DAWGS WORLDWIDE. ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <!-- Audio Context Synthesizer for Bark Effect -->
+  <script>
+    // Fallback placeholder generator if image fails to load initially
+    function handleImgError(img) {
+      const svgPlaceholder = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500" fill="%23050505"><rect width="100%" height="100%" fill="%230a0a0a"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-weight="bold" font-size="20">ICEDDAWG.JPG</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23666666" font-family="sans-serif" font-size="12">Upload 'iceddawg.jpg' to your repository root</text></svg>`;
+      img.onerror = null;
+      img.src = svgPlaceholder;
+    }
+
+    // Interactive Drag and Drop functionality for easy photo previewing
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const houndImg = document.getElementById('houndImg');
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    dropZone.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      if (files.length > 0) {
+        updateImage(files[0]);
+      }
+    }
+
+    fileInput.addEventListener('change', function() {
+      if (this.files.length > 0) {
+        updateImage(this.files[0]);
+      }
+    });
+
+    function updateImage(file) {
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          houndImg.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Web Audio API Synthesized Bark / Growl Sound Effect
+    const barkBtn = document.getElementById('barkBtn');
+    let audioCtx = null;
+
+    barkBtn.addEventListener('click', () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      // Synthesize a heavy growl/bark sound effect
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(140, now);
+      osc.frequency.exponentialRampToValueAtTime(40, now + 0.35);
+
+      gain.gain.setValueAtTime(0.8, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.35);
+
+      // Button Visual Feedback
+      barkBtn.classList.add('scale-95', 'border-white');
+      setTimeout(() => barkBtn.classList.remove('scale-95', 'border-white'), 150);
+    });
+  </script>
+</body>
+</html>
